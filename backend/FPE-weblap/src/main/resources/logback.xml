@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <property resource="application.properties" />
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- encoder kell, mert jelzi warn-ban ha layout-ot teszunk -->
+        <encoder>
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</Pattern>
+        </encoder>
+    </appender>
+
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.dir}/log.html</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${log.dir}/log.%d{yyyy-MM-dd}.html</fileNamePattern>
+        </rollingPolicy>
+
+        <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+            <layout class="ch.qos.logback.classic.html.HTMLLayout">
+                <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS}%thread%level%logger{36}%msg</pattern>
+            </layout>
+        </encoder>
+    </appender>
+
+    <appender name="FILE_HIBERNATE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.dir}/log_hibernate.html</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${log.dir}/log_hibernate.%d{yyyy-MM-dd}.html</fileNamePattern>
+        </rollingPolicy>
+
+
+
+        <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+            <layout class="ch.qos.logback.classic.html.HTMLLayout">
+                <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS}%thread%level%logger{36}%msg</pattern>
+            </layout>
+        </encoder>
+    </appender>
+
+
+    <!-- additivity=false ensures data only goes to the FILE log -->
+    <logger name="hu.hardcore" level="INFO" additivity="false" >
+        <appender-ref ref="STDOUT" />
+        <appender-ref ref="FILE"/>
+    </logger>
+
+    <logger name="hu.hardcore" level="DEBUG" additivity="false" >
+        <appender-ref ref="STDOUT" />
+        <appender-ref ref="FILE"/>
+    </logger>
+
+    <logger name="org.springframework.core" level="ERROR" additivity="false">
+        <appender-ref ref="FILE"/>
+    </logger>
+    <logger name="org.springframework.beans" level="ERROR" additivity="false">
+        <appender-ref ref="FILE"/>
+    </logger>
+
+    <logger name="org.springframework.context" level="ERROR" additivity="false">
+        <appender-ref ref="FILE"/>
+    </logger>
+
+    <logger name="org.springframework.web" level="ERROR" additivity="false">
+        <appender-ref ref="FILE"/>
+    </logger>
+
+    <logger name="org.hibernate" level="ERROR" additivity="false">
+        <appender-ref ref="FILE_HIBERNATE"/>
+    </logger>
+
+    <logger name="org.dbunit" level="ERROR" additivity="false">
+        <appender-ref ref="FILE"/>
+    </logger>
+
+    <logger name="org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration" level="WARN" additivity="false">
+        <appender-ref ref="STDOUT"/>
+    </logger>
+
+
+    <root level="ERROR">
+        <appender-ref ref="STDOUT" />
+        <appender-ref ref="FILE" />
+    </root>
+
+
+</configuration>

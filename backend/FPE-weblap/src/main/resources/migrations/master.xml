@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <include file="migrations/2023.06.04/create_table_news_page.sql"/>
+    <include file="migrations/2023.06.04/create_table_role.sql"/>
+    <include file="migrations/2023.06.04/create_table_users.sql"/>
+    <include file="migrations/2023.06.04/create_table_user_x_role.sql"/>
+    <include file="migrations/2023.06.04/insert_default_user_values.sql"/>
+    <include file="migrations/2023.12.21/alter_news_page_model.sql"/>
+    <include file="migrations/2023.12.21/create_events_table.sql"/>
+    <!--include file="migrations/2023.12.21/create_dummy_data_for_events_and_news_page.sql"/-->
+    <include file="migrations/2024.02.01/add_facebook_link_fields.sql"/>
+    <include file="migrations/2024.02.01/dummy_events_with_img.sql"/>
+    <include file="migrations/2024.02.21/set_new_password.sql"/>
+    <include file="migrations/2024.04.26/create_gallery_image_table.sql"/>
+    <include file="migrations/2024.04.26/add_updated_fields_to_gallery_image.sql"/>
+    <include file="migrations/2024.04.26/dummy_data_for_gallery.sql"/>
+    <include file="migrations/2024.04.26/add_title_to_gallery_images.sql"/>
+    <include file="migrations/2024.04.26/create_gallery_view.sql"/>
+    <include file="migrations/2024.04.26/more_gallery_data.sql"/>
+    <include file="migrations/2024.06.11/main_news_for_news_page.sql"/>
+</databaseChangeLog>
