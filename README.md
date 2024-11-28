@@ -25,5 +25,3 @@ A file szerver pedig real thing, ez lesz élesben is.
     "text":"Üzenet szövege"
 }
 ```
-
-Olcsa
